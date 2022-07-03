@@ -1,0 +1,30 @@
+<nav>
+  <ul>
+    <ng-container *ngFor="let route of routes">
+      <li *ngIf="route.show" [routerLink]="route.path">
+        <ng-container>
+          <button>
+            {{ route.path }}
+          </button>
+          <img src="{{route.icon}}" alt="">
+        </ng-container>
+      </li>
+    </ng-container>
+    <hr>
+    <li>
+      <button routerLink="/">Login</button>
+      <button routerLink="/">dashboard</button>
+    </li>
+    <li>
+      <button routerLink="/error/404">Error 404</button>
+    </li>
+    <li>
+      <button routerLink="/dashboard/membership/checkout">checkout</button>
+    </li>
+  </ul>
+</nav>
+
+<!-- DEBUG
+<pre>
+debug {{routes | json}}
+</pre> -->
