@@ -1,4 +1,4 @@
-import { loadItems } from './../../../store/actions/items.actions';
+import { toggleLoading } from './../../../store/actions/items.actions';
 import { selectLoading } from './../../../store/selectors/items.selectors';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Routes } from '@angular/router';
@@ -22,7 +22,7 @@ export class DashboardLayoutComponent implements OnInit {
   ngOnInit(): void {
     this.loading$ = this.store.select(selectLoading)
 
-    // this.store.dispatch(loadItems)
+    // this.store.dispatch(toggleLoading)
   }
 
 }

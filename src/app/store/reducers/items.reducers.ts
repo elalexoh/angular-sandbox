@@ -1,29 +1,26 @@
 import { loadedItems } from './../actions/items.actions';
 import { ItemsState } from './../../core/models/Items.state';
 import { createReducer, on } from '@ngrx/store'; //TODO <----
-import { loadItems } from '../actions/items.actions';
+import { toggleLoading } from '../actions/items.actions';
 
-//TODO: (2) Estado inicial!
 
 export const initialState: ItemsState = { loading: false, items: [] }
-
-// {
-//     "items":{
-//         "loading":"false",
-//         "items":[]
-//     }
-// }
-
-//TODO: (3)
 
 export const itemsReducer = createReducer(
 
   initialState,
-  on(loadItems, (state) => { //TODO:!
-    return { ...state, loading: true }
+  on(toggleLoading, (prevState) => {
+    const newState = {
+      loading: !prevState.loading
+    }
+    return { ...prevState, ...newState }
   }),
 
-  on(loadedItems, (state, { items }) => { //TODO:!
-    return { ...state, loading: false, items }
+  on(loadedItems, (prevState, { items }) => {
+    const newState = {
+      loading: !prevState.loading,
+      items
+    }
+    return { ...prevState, ...newState }
   })
 );
